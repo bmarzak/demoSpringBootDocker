@@ -3,7 +3,7 @@ services:
   mysql-standalone:
     image: 'mysql:8.0'
     environment:
-      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_USER=admin
       - MYSQL_PASSWORD=xJt83wCpHf82F2
       - MYSQL_DATABASE=my_db_springboot
     ports:
