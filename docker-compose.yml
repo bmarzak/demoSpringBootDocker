@@ -1,0 +1,23 @@
+version: '20.10.8'
+services:
+  mysql-standalone:
+    image: 'mysql:8.0'
+    environment:
+      - MYSQL_ROOT_PASSWORD=admin
+      - MYSQL_PASSWORD=xJt83wCpHf82F2
+      - MYSQL_DATABASE=my_db_springboot
+    ports:
+      - "3307:3306"
+  springboot-docker-container:
+    image: docker-spring-boot-project-example
+    ports:
+      - "9001:9001"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://localhost:3306/my_db_springboot?autoReconnect=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: "admin"
+      SPRING_DATASOURCE_PASSWORD: "xJt83wCpHf82F2"
+    build:
+      context: "./"
+      dockerfile: "Dockerfile"
+    depends_on:
+      - mysql-standalone
